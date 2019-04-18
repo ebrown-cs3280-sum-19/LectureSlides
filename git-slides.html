@@ -1,0 +1,333 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Intro to Git</title>
+
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/league.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/monokai.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+		<section>
+			<h1>Intro to Git</h1>
+		</section>
+		<section>
+			<h2>Very Brief History</h2>
+			<p class="fragment">Created in 2005 by THE Linus Torvalds to help with developing the Linux kernel.</p>
+			<p class="fragment">They were unhappy with the system they were using (BitKeeper) since the company decided to start
+				charging them.</p>
+		</section>
+		<section>
+			<section>
+				<h2>What is Git?</h2>
+				<p class="fragment">A <strong>Distributed</strong> version-control system</p>
+				<p class="fragment">What's that?</p>
+			</section>
+			<section>
+				<h2>Version Control System</h2>
+				<p>is a system that records changes to a file or set of files over time so that you can recall
+					specific versions later.</p>
+			</section>
+			<section>
+				<h2>Distributed</h2>
+				<p>Meaning the entire repository is stored on each contributor's local storage</p>
+			</section>
+			<section>
+				<h2>Some Version Control Software</h2>
+				<ul>
+					<li>Subversion</li>
+					<li>Team Foundation Server</li>
+					<li>Mercurial</li>
+					<li>BitKeeper</li>
+				</ul>
+			</section>
+			<section>
+				<p>As a distributed system this means that every local repo is a complete copy of the remote.</p>
+				<p>This gives many advantages:</p>
+				<ul>
+					<li class="fragment">Redundancy of source code</li>
+					<li class="fragment">Easy recovery</li>
+					<li class="fragment">Working remote means you don't always need a connection to access the code</li>
+				</ul>
+			</section>
+			<section>
+				<p>This does however come with a few complications:</p>
+				<ul>
+					<li class="fragment">You may end up working on the same files as another contributor and have merge conflicts</li>
+					<li class="fragment">If you forget to pull you could do a lot of work that is incompatible with current state of
+						the source code</li>
+					<li class="fragment">It can be a little difficult to get used to</li>
+					<li class="fragment">The tool is really stupid (hence the name) which ironically means you can't be</li>
+				</ul>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2 id="setup">Setup</h2>
+			</section>
+			<section>
+				<h2>Install for Windows <a href="https://gitforwindows.org">https://gitforwindows.org</a></h2>
+				<ul>
+					<li>Set github user information
+						<ol>
+							<li>Open cmd prompt</li>
+							<li><code>&gt; git config --global user.email &quot;your_email@example.com&quot;</code>
+							</li>
+						</ol>
+					</li>
+				</ul>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2 id="getting-started">Getting Started</h2>
+			</section>
+			<section>
+				<h2>If you are starting a new project:</h2>
+			</section>
+			<section>
+				<ol>
+					<li>create a new project folder</li>
+					<li>in the console change directory to it.
+						<blockquote>
+							<p>&gt; <code>cd path/to/my/project</code></p>
+						</blockquote>
+					</li>
+					<li>initialize new git repo
+						<blockquote>
+							<p>&gt; <code>git init</code></p>
+						</blockquote>
+					</li>
+					<li>add remote repo
+						<blockquote>
+							<p>&gt; <code>git remote add origin
+									https://.github.com/...</code></p>
+						</blockquote>
+					</li>
+				</ol>
+			</section>
+			<section>
+				<p>If you want to pick up an existing project from a remote like github:</p>
+			</section>
+			<section>
+				<ol>
+					<li>go to the repo on github and click the <code>clone</code> button</li>
+					<li>It will show you a url that you can copy</li>
+					<li>in your console navigate to where you would like the store the repo
+						<blockquote>
+							<p>&gt; <code>cd path/to/projects/folder</code></p>
+						</blockquote>
+					</li>
+					<li>clone the repo
+						<blockquote>
+							<p>&gt; <code>git clone https://.github.com/...</code>
+							</p>
+						</blockquote>
+					</li>
+				</ol>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2 id="basic-git-workflow">Basic Git Workflow</h2>
+			</section>
+			<section>
+				<p>Now that you have a local repo we can now start tracking code changes</p>
+				<p>You have 3 parts of your local repository</p>
+				<ol>
+					<li>Working Directory - holds the actual files</li>
+					<li>Index - staging area for commits</li>
+					<li>HEAD - points to the last commit you made</li>
+				</ol>
+			</section>
+			<section>
+				<h3 id="workflow-diagram">Workflow Diagram</h3>
+				<p><img src="./images/git-workflow.png" alt="git workflow diagram" title="git workflow diagram"></p>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2>commiting changes</h2>
+			</section>
+			<section>
+				<ol>
+					<li>Add changed files to the <code>Index</code>
+						<blockquote>
+							<p>&gt; <code>git add \&lt;filename&gt;</code></p>
+						</blockquote>
+					</li>
+					<li>Commit the index files to the <code>HEAD</code>
+						<blockquote>
+							<p>&gt; <code>git commit -m &quot;Commit message&quot;</code></p>
+						</blockquote>
+					</li>
+					<li>Push the changes to the remote repo
+						<blockquote>
+							<p>&gt; <code>git push origin master</code></p>
+						</blockquote>
+					</li>
+				</ol>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2 id="branching-and-merging-workflow">Branching and Merging</h2>
+			</section>
+			<section>
+				<ul>
+					<li class="fragment">Branches are a way to work on new features without changing the main code base.</li>
+					<li class="fragment">To checkout a new branch:<code>git checkout -b &quot;new-branch-name&quot;</code></li>
+					<li class="fragment">You can then make commits as usual</li>
+					<li class="fragment">When you are ready to merge back into master: <code>git checkout master</code> then
+						<code>git merge
+							&quot;new-branch-name&quot;</code></li>
+					<li class="fragment">If the master has had changes since created the new branch git will resolve any merging it
+						can</li>
+					<li class="fragment">If there is are line(s) that were modified on both branches git will require you to resolve
+						those conflicts
+						and then make a new commit</li>
+				</ul>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2>Rebase vs Merge</h2>
+			</section>
+			<section>
+				<ul>
+					<li class="fragment">rebasing can sound scary at first but it's really just another method of merging.</li>
+					<li class="fragment">When rebasing git will take all the commits you made on one branch and move those on top of
+						the other</li>
+					<li class="fragment">It does the same thing as a merge it just looks like you did all your work in the rebased
+						branch</li>
+					<li class="fragment">The best way to learn this is to use a git visualizer simulation</li>
+					<li class="fragment"><a href="https://git-school.github.io/visualizing-git/" target="_blank">visualizing-git</a></li>
+				</ul>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h2 id="ignoring-files">Ignoring Files</h2>
+			</section>
+			<section>
+				<ul>
+					<li class="fragment">You may have environment files or IDE config filesthat are specific to your system or large
+						asset files that
+						you don't want to store in the remote repo.</li>
+					<li class="fragment">You can ignore these files by adding their names to a file in the repo named
+						<code>.gitignore</code>.</li>
+					<li class="fragment">The file supports globs, ie. <code>*.env</code> will ignore
+						all files that end with <code>.env</code>.</li>
+					<li class="fragment">A good resource for predefined ignore files is <a
+							href="https://gitignore.io">gitignore.io</a>.
+					</li>
+				</ul>
+			</section>
+		</section>	
+		<section>
+			<h2 id="advanced-workflows">Advanced Workflows</h2>
+		</section>
+		<section>
+			<section>
+				<h3 id="the-reflog">The reflog</h3>
+				<p>You will start to love git once you learn to use <code>git reflog</code></p>
+			</section>
+			<section>
+				<ul>
+					<li class="fragment">reflog is used to see a history of actions on your local repo</li>
+					<li class="fragment">reverse a bad commit and rewrite history</li>
+					<li class="fragment">one of the most powerful things in git</li>
+					<li class="fragment">with great power comes something something</li>
+					<li class="fragment">It's fairly easy to undo most actions but you should always be sure of what you are doing.
+					</li>
+					<li class="fragment">If all else fails, delete and reclone</li>
+				</ul>
+			</section>
+			<section>
+				<p><img src="./images/git-reflog.png" alt="git reflog"></p>
+			</section>
+			<section>
+				<ul>
+					<li>notice the <code>HEAD@{#}</code> on each line</li>
+					<li>this refers to how many actions from the current change that action is</li>
+					<li>if you want to take back the last commit or action you did you would run:
+					<code>git reset HEAD@{1}</code></li>
+					<li>this will put you <code>working directory</code> into the same state it was before that last action</li>
+					<li>you can then keep working or if you need to set the remote repo in the same state you would then run:
+					<code>git push --force</code></li>
+				</ul>
+			</section>
+			<section>
+					<blockquote>
+					<p><strong>WARNING:</strong> Be very careful when rewriting history on the remote. This cannot be undone and you will cause all other cloned repos to get out of sync. They will have to reclone the repo.</p>
+					</blockquote>
+			</section>
+		</section>
+		<section>
+			<section>
+				<h3 id="aliases">Aliases</h3>
+			</section>
+			<section>
+				<p>Inside your <code>.gitconfig</code> file you can define aliases to speed up your workflow</p>
+				<p>Heres an example with <code>git log</code></p>
+				<p class="fragment"><code>git log</code>:</p>
+				<ul>
+					<li class="fragment">visualizes your repo history</li>
+					<li class="fragment">It can take a lot of parameters</li>
+				</ul>
+			</section>
+			<section>
+				<p><a href="./snippets/git-aliases.html" target="_blank">click here for example aliases</a></p>
+				<p>Example output of <code>git lg2</code>
+				<img src="./images/git-lg2.png" alt="git lg2"></p>
+			</section>
+		</section>
+		</div>
+	</div>
+
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			dependencies: [{
+					src: 'plugin/markdown/marked.js'
+				},
+				{
+					src: 'plugin/markdown/markdown.js'
+				},
+				{
+					src: 'plugin/notes/notes.js',
+					async: true
+				},
+				{
+					src: 'plugin/highlight/highlight.js',
+					async: true
+				}
+			]
+		});
+	</script>
+</body>
+
+</html>
