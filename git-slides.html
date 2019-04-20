@@ -96,6 +96,9 @@
 					<blockquote>
 						<strong>NOTE:</strong> <code>&quot;your_email@example.com&quot;</code> is your github user email
 					</blockquote>
+					<aside class="notes">
+						If you have your github email set to private you will need to use the generated email in your account settings.
+					</aside>
 				</div>
 			</section>
 			<section>
@@ -108,7 +111,7 @@
 				</ol>
 				<blockquote>
 						<strong>NOTE:</strong> <code>&quot;your_email@example.com&quot;</code> is your github user email
-				</blockquote>			
+				</blockquote>
 			</section>
 		</section>
 		<section>
@@ -208,7 +211,7 @@
 			</section>
 			<section>
 				<ul>
-					<li class="fragment">Branches are a way to work on new features without changing the main code base.</li>
+					<li>Branches are a way to work on new features without changing the main code base.</li>
 					<li class="fragment">To checkout a new branch:<code>git checkout -b &quot;new-branch-name&quot;</code></li>
 					<li class="fragment">You can then make commits as usual</li>
 					<li class="fragment">When you are ready to merge back into master: <code>git checkout master</code> then
@@ -228,7 +231,7 @@
 			</section>
 			<section>
 				<ul>
-					<li class="fragment">rebasing can sound scary at first but it's really just another method of merging.</li>
+					<li>rebasing can sound scary at first but it's really just another method of merging.</li>
 					<li class="fragment">When rebasing git will take all the commits you made on one branch and move those on top of
 						the other</li>
 					<li class="fragment">It does the same thing as a merge it just looks like you did all your work in the rebased
@@ -244,7 +247,7 @@
 			</section>
 			<section>
 				<ul>
-					<li class="fragment">You may have environment files or IDE config filesthat are specific to your system or large
+					<li>You may have environment files or IDE config filesthat are specific to your system or large
 						asset files that
 						you don't want to store in the remote repo.</li>
 					<li class="fragment">You can ignore these files by adding their names to a file in the repo named
@@ -267,7 +270,7 @@
 			</section>
 			<section>
 				<ul>
-					<li class="fragment">reflog is used to see a history of actions on your local repo</li>
+					<li>reflog is used to see a history of actions on your local repo</li>
 					<li class="fragment">reverse a bad commit and rewrite history</li>
 					<li class="fragment">one of the most powerful things in git</li>
 					<li class="fragment">with great power comes something something</li>
@@ -289,6 +292,12 @@
 					<li>you can then keep working or if you need to set the remote repo in the same state you would then run:
 					<code>git push --force</code></li>
 				</ul>
+				<aside class="notes">
+					<ul>
+						<li>You can also use HEAD^^^ for HEAD@{3}</li>
+						<li>HEAD@{0} is the latest change (where the head is currently)</li>
+					</ul>
+				</aside>
 			</section>
 			<section>
 					<blockquote>
