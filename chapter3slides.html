@@ -53,6 +53,11 @@
 						<li>C#'s predefined namespaces are refferred to as the .NET Framework Class Library (FCL)</li>
 					</ul>
 				</section>
+			</section>
+			<section>
+				<section>
+					Classes
+				</section>
 				<section>
 					<h3>Class Declaration</h3>
 					<ul>
@@ -83,16 +88,70 @@
 						<li>more on this next chapter</li>
 					</ul>
 				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Creating a Console App in Visual Studio</h2>
+				</section>
+				<section>
+					<h3>New Project</h3>
+					<ol>
+						<li>Open Visual Studio</li>
+						<li><strong>File > New > Project</strong></li>
+						<li><strong>Installed > Templates > Visual C#</strong> select <strong>Console Application</strong></li>
+						<li>Fill in the name and select the location you want to save the project and click <strong>ok</strong></li>
+					</ol>
+					<p>Visual Studio will then create the project folder and all the files you need</p>
+				</section>
 				<section>
 					<h3>Main Method</h3>
 					<ul>
 						<li><code>static void Main()</code></li>
 						<li>entry point for app execution</li>
-						<li></li>
+						<li>you must have a Main method or it won't execute</li>
 					</ul>
 				</section>
-
+				<section>
+					<h3>Displaying Text</h3>
+					<ul>
+						<li><code>Console.WriteLine("welcome to C# programming");</code></li>
+						<li>Console is static class from the System namespace</li>
+						<li>It can write a string</li>
+						<li><code>Console.WriteLine()</code> writes the string on a new line</li>
+						<li><code>Console.Write</code> writes the string on the current line</li>
+					</ul>
+				</section>
 			</section>
+			<section>
+				<section>
+					<h2>Strings</h2>
+				</section>
+				<section>
+					<ul>
+						<li>strings are a sequence of charcters between double quotes "</li>
+						<li>they support <strong>escape sequences</strong> for special characters
+							<ul>
+								<li><code>\n</code> - newline</li>
+								<li><code>\t</code> - tab</li>
+								<li><code>\"</code> - double quote</li>
+								<li><code>\r</code> - carriage return</li>
+								<li><code>\\</code> - backlash</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>String Interpolation</h3>
+					<p>very nice feature that allows placing varialbes within a string without concatenation or formatting</p>
+					<blockquote>
+						<code><p align="left">string person = "Bruce";<br>
+							Console.WriteLine($"Welcome to C# programming, {person}!")</p>
+						</code>
+					</blockquote>
+					<p>the <code>$</code> indicates a string for interpolation. Inside the string the <code>{ }</code> indicates a variable that's value needs to be inserted</p>
+				</section>
+			</section>
+
 			
 		</div>
 	</div>
