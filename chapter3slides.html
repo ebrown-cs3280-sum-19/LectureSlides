@@ -56,7 +56,7 @@
 			</section>
 			<section>
 				<section>
-					Classes
+					<h2>Classes</h2>
 				</section>
 				<section>
 					<h3>Class Declaration</h3>
@@ -106,7 +106,11 @@
 				<section>
 					<h3>Main Method</h3>
 					<ul>
-						<li><code>static void Main()</code></li>
+						<li data-markdown>
+							```[c#]
+							static void Main()>
+							```
+						</li>
 						<li>entry point for app execution</li>
 						<li>you must have a Main method or it won't execute</li>
 					</ul>
@@ -114,11 +118,32 @@
 				<section>
 					<h3>Displaying Text</h3>
 					<ul>
-						<li><code>Console.WriteLine("welcome to C# programming");</code></li>
+						<li data-markdown>
+							```[c#]
+							Console.WriteLine("welcome to C# programming")
+							```
+						</li>
 						<li>Console is static class from the System namespace</li>
 						<li>It can write a string</li>
 						<li><code>Console.WriteLine()</code> writes the string on a new line</li>
 						<li><code>Console.Write</code> writes the string on the current line</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Reading Input</h3>
+					<ul>
+						<li data-markdown>
+							```[c#]
+							string in = Console.ReadLine();
+							```</li>
+						<li>Console also has a <code>ReadLine()</code> method</li>
+						<li>It returns a string of whatever the user typed into the console</li>
+						<li>You can parse this string into different datatypes</li>
+						<li data-markdown>
+							```[c#]
+							int number = int.Parse(Console.ReadLine());
+							```
+						</li>
 					</ul>
 				</section>
 			</section>
@@ -127,8 +152,9 @@
 					<h2>Strings</h2>
 				</section>
 				<section>
+					<h3>Escape Sequences</h3>
 					<ul>
-						<li>strings are a sequence of charcters between double quotes "</li>
+						<li>strings are a sequence of characters between double quotes "</li>
 						<li>they support <strong>escape sequences</strong> for special characters
 							<ul>
 								<li><code>\n</code> - newline</li>
@@ -143,11 +169,12 @@
 				<section>
 					<h3>String Interpolation</h3>
 					<p>very nice feature that allows placing varialbes within a string without concatenation or formatting</p>
-					<blockquote>
-						<code><p align="left">string person = "Bruce";<br>
-							Console.WriteLine($"Welcome to C# programming, {person}!")</p>
-						</code>
-					</blockquote>
+					<p data-markdown>
+						```[c#]
+						string person = "Bruce";
+						Console.WriteLine($"Welcome to C# programming, {person}!")
+						```
+					</p>
 					<p>the <code>$</code> indicates a string for interpolation. Inside the string the <code>{ }</code> indicates a variable that's value needs to be inserted</p>
 				</section>
 			</section>
