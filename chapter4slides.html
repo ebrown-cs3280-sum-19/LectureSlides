@@ -160,6 +160,7 @@
 					Methods can interact with properties and instance variables.
 
 					```[c#]
+					// method that deposits only a valid amount to the balance
 					public void Deposit(decimal depositAmount) {
 						if (depositAmount > 0.0m) {
 							Balance += depositAmount;
