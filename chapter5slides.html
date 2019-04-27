@@ -30,10 +30,206 @@
 			<section>
 				<h1>Chapter 5 - Control Structures</h1>
 			</section>
-			<section data-markdown>
-				
+			<section>
+				<section data-markdown>
+					## Problem Solving ##
+				</section>
+				<section data-markdown>
+					### Algorithms ###
+
+					* Any computing problem can be solved by executing a series of **actions** in a specific **order**
+					* These actions in a specific order is called an algorithm
+				</section>
+				<section data-markdown>
+					### Pseudocode ###
+
+					* informal language that helps you develop algorithms without worrying about syntax
+					* psuedocode isn't a formal language and you can define your own
+					* come up with whatever style helps you but try to be consistent
+					* you can use plain language or something that is closer to code
+				</section>
+				<section data-markdown>
+					plain-English psudocode (no variable assignments)
+
+					```[psuedocode]
+					Prompt user for integer
+					Input the first integer
+
+					prompt the user for integer
+					Input the second integer
+
+					Add first integer and second integer
+					Display result
+					```
+				</section>
+				<section data-markdown>
+					more "code-like" psudocode
+
+					```[psudocode]
+					integer1 = user input
+					integer2 = user input
+					result = integer1 + integer2
+					display result
+					```
+				</section>
 			</section>
-		</div>
+			<section>
+				<section data-markdown>
+					## Control Statements ##
+				</section>
+				<section data-markdown>
+					### Structural Programming ###
+
+					* in the 60s it was common to use `goto` statement
+					* ths cause a logt of difficulty among software developers
+					* a `goto` could transfer control almost anywhere in the code
+					* Bohm and Jacopini research showed that they could write code without `goto` statements
+					* this discipline of not using `goto` statements is called *structured programming*
+					* this sped up development times and kept budgets
+					* they also showed that you could write all programs with only 3 types of control structures
+				</section>
+				<section data-markdown>
+					### Sequence Structure ###
+
+					Basic structure where each statement is executed one after the other in the order they are written.
+				</section>
+				<section data-markdown>
+					### Selection Structures ###
+
+					* 3 different types of selection statements
+					* `if` statement performs the action if a condition is true
+					* `if` `else` performs an action if a condition is true or performs a different action if it's false
+					* `switch` statement performs one of many different actions depending on the value of an expression 
+					<aside class="notes">
+						switch statements and big if-else trees can be hard to read so should be kept away from higher level code
+					</aside>
+				</section>
+			</section>
+			<section>
+				<section data-markdown>
+					## Selection Statements ##
+				</section>
+				<section data-markdown>
+					### If Single-Selection Statement ###
+
+					Psudocode if statement
+					
+					```[psudocode]
+					If student’s grade is greater than or equal to 60
+						Display “Passed”
+					```
+				</section>
+				<section data-markdown>
+					c# if statement
+
+					```[C#]
+					if (studentGrade >= 60)
+					{
+						Console.WriteLine("Passed");
+					}
+					```
+				</section>
+				<section data-markdown>
+					Psudocode if...else statement
+
+					```[psudocode]
+					If student's grade is greater than or equal to 60
+							Display "Passed"
+					Else
+							Display "Failed"
+					```
+				</section>
+				<section data-markdown>
+					C# if...else statement
+
+					```[C#]
+					if (grade >= 60)
+					{
+						Console.WriteLine("Passed");
+					}
+					else
+					{
+						Console.WriteLine("Failed");
+					}
+					```
+				</section>
+			</section>
+			<section>
+				<section data-markdown>
+					## Iteration Statements ##
+				</section>
+				<section data-markdown>
+					### `while` iteration statement ###
+
+					Psudocode while loop
+					
+					```[psudocode]
+					While there are more items on my shopping list
+						Purchase next item and cross it off my list
+					```
+				</section>
+				<section data-markdown>
+					C# while loop
+
+					```[C#]
+					int product = 3;
+					while (product <= 100)
+					{
+						product = 3 * product;
+					}
+					```
+					More on iteration statements in chapter 6
+				</section>
+			</section>
+			<section>
+				<section data-markdown>
+					## Assignments ##
+				</section>
+				<section data-markdown>
+					### Conditional Operator ###
+
+					* `?:` can be used in place of an `if..else` statement
+					* c#'s only ternary operator
+					* takes 3 operands
+					* `bool-expression ? true-value : false-value`
+					
+					```[C#]
+					Console.WriteLine(studentGrade >= 60 ? "Passed" : "Failed");
+					```
+				</section>
+				<section data-markdown>
+					### Compound Assignment Operators ###
+
+					Abbreviate assignment operations like this:
+					
+					`variable = variable operator expression;`
+					
+					to
+					
+					`variable operator= expression;`
+				</section>
+				<section data-markdown>
+					for example:
+
+					`c = c + 3;`
+					
+					using the compund assignment operator
+					
+					`c += 3`
+				</section>
+				<section data-markdown>
+					The `+=` adds the value of the expression on its right to the variable on it's left and stores it in the variable on the left
+
+					other compound assignment operators:
+					
+					* `+=`
+					* `-=`
+					* `*=`
+					* `/=`
+					* `%=`
+				</section>
+			</section>
+			</div>
 	</div>
 
 	<script src="js/reveal.js"></script>
