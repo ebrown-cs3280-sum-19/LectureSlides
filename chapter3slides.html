@@ -177,6 +177,23 @@
 					</p>
 					<p>the <code>$</code> indicates a string for interpolation. Inside the string the <code>{ }</code> indicates a variable that's value needs to be inserted</p>
 				</section>
+				<section data-markdown>
+					### `@` Character ###
+
+					Strings that have the `@` symbol before the double quotes mean that all characters will be literal and will ignore any escape characters.
+					
+					Example:
+					
+					```[C#]
+					path = @"c:\Users\UserName\Documents"
+					```
+					
+					VS
+					
+					```[C#]
+					path = "c:\\Users\\UserName\\Documents"
+					```						
+				</section>
 			</section>
 
 			
