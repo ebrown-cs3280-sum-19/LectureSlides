@@ -1,0 +1,445 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Chapter 7 - Methods</title>
+
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/league.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/monokai.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>Chapter 7 - Methods</h1>
+			</section>
+			<section>
+				<section data-markdown>
+					## Packaging Code in C# ##
+				</section>
+				<section data-markdown>
+					### Modularizing Programs ###
+
+					* Methods (functions or procedures) allow you to modularize an app by separating task into self-contained units
+					* Usually, **method** refers to a **function** associated with an object but for the most part **function** and **method** are interchangeable
+					* methods are essentially smaller programs inside a larger program that can be reused
+				</section>
+				<section data-markdown>
+					### Calling Methods ###
+
+					* Methods are invoked by a method call
+					* When a method completes, it returns control and possibly a result to its caller
+					```[C#]
+					result = objectOne.Method1();
+					```
+				</section>
+			</section>
+			<section>
+				<section data-markdown>
+					## `static` Keyword ##
+				</section>
+				<section data-markdown>
+					### `static` Methods ###
+
+					* Not all methods are reliant on an object's data to perform it's task
+					* These methods can be `static` methods meaning you can call them in their `class` rather than in an instantiated object from that `class`
+					
+					```[C#]
+					ClassName.MethodName(arguments);
+					```
+				</section>
+				<section data-markdown>
+					### `static` Variables ###
+
+					* `static` variables are variables that associated with a class and not to any instances of that class
+					* If you have a static variable in a class then instantiate an instance of that class, that static variable will have the same value for all instances of the class
+					
+					```[C#]
+					MyClass myClass = new MyClass();
+					Debug.Assert(myClass.SomeStaticVariable == MyClass.SomeStaticVariable); // is true
+					```
+				</section>
+				<section data-markdown>
+					### `static` Class ###
+
+					* `static` classes are classes that can't be instantiated
+					* They can only contain static data members and methods
+					* they sealed, meaning you cannot inherit a static class from another class
+				</section>
+				<section data-markdown>
+					### C# `Math` Class ###
+
+					* `Math` is part of the `System` namespace
+					* Provides a collection of methods that perform mathematical calculations
+					
+					```[C#]
+					double value = Math.Sqrt(900.0); // Static method call
+						```
+				</section>
+				<section data-markdown>
+					Some Static Methods in `Math`
+					
+					* `Abs(x)` absolute value
+					* `Ceiling(x)` Rounds up to next int
+					* `Floor(x)` Round down to next int
+					* `Cos(x)`, `Sin(x)`, `Tan(x)` Trigonmetric functions
+					* `Pow(x, y)` raise x to power of y
+					* `Log(x)` natural log
+					* and more...
+				</section>
+				<section data-markdown>
+					### Static Variables ###
+
+					* Static variables are associated with the class they are in not any object instantiated from that class
+					* All instances of the class will share the static variables in it
+					* `Math` has two static `double` constants that are common math values:
+						* `Math.PI`
+						* `Math.E`
+				</section>
+				<section data-markdown>
+					### `static` Main ###
+
+					Why is main declared static?
+					During app startup, no objects of the class have been created, the `Main` method must be called to begin program execution.
+					Declaring `Main` as `static` allows the execution environment to call `Main` without creating an instance of the class
+				</section>
+			</section>
+			<section>
+				<section data-markdown>
+					## Calling Methods ##
+				</section>
+				<section data-markdown>
+						### Three Ways to Call a Method ###
+
+						1. Using a method name by itself to call a method of the same class
+						2. Using a reference to an object, followed by the member-access operator (`.`) and the method name to call non-`static` method of referenced object
+						3. Using the class name and the `.` operator to call a `static` method of a class
+				</section>
+				<section data-markdown>
+					### Three Ways to Call a Method ###
+
+					1. Using a method name by itself to call a method of the same class
+					2. Using a reference to an object, followed by the member-access operator (`.`) and the method name to call non-`static` method of referenced object
+					3. Using the class name and the `.` operator to call a `static` method of a class
+				</section>
+			</section>
+			<section>
+				<section data-markdown>
+					## Method Example ##
+				</section>
+				<section data-markdown>
+					### Maximum Method ###
+
+					```[C#]
+					class Maximum Finder
+					{
+						static void Main()
+						{
+							// static methods can directly call other static methods in the same clas
+							double result = Maximum(2.0, 4.1, 1.1);
+							Console.WriteLine(result); // prints 4.1
+						}
+						static double Maximum(double x, double y, double z)
+						{
+							double maximumValue = x;
+							if (y > maximumValue)
+							{
+								maximumValue = y;
+							}
+							if (z > maximumValue)
+							{
+								maximumValue = z;
+							}
+							return maximumValue
+						}
+					}
+					```
+				</section>
+			</section>
+			<section>
+				<section data-markdown>
+					## Method-Call Stack ##
+				</section>
+				<section data-markdown>
+					* LIFO - Last In First Out
+					* **Push** on top to add, **pop** off the top to remove
+					* Sometimes referred to as the program-execution stack
+					* Works behind the scenes to support the method call/return mechanism
+					* It holds each called method's local variables
+				</section>
+				<section data-markdown>
+					### Stack Frames ###
+
+					* As a method is called it may call another method
+					* The last called method needs to return before the previously called method can finish
+					* When a method calls another method an entry is **pushed** on the stack
+					* This entry are called **stack frame** or **activation record**
+					* Contains the return address that the called method needs in order to return to the calling method
+					* When a method finishes the stack frame is **popped** and it transfers control to the return address in the popped stack frame
+					* A method always can find information it needs at the top of the call stack
+				</section>
+				<section data-markdown>
+					### Local Variables and Stack Frames ###
+
+					* Stack frames contain local variables for the method
+					* Local variables only exist while a method is executing
+					* They persist on the stack when another method is called
+					* When a method finishes it's frame is **popped** and garbage collections reclaims the memory
+				</section>
+				<section data-markdown>
+					### Stack Overflow ###
+
+					* You can run out of memory if too much is placed on the stack
+					* This is called **stack overflow**
+				</section>
+			</section>
+			<section>
+				<section data-markdown>
+					## Method Overloading ##
+
+					* Methods of the same name in the same class, as long as they have different sets of parameters
+				</section>
+				<section data-markdown>
+					```[c#]
+					// square method with int argument
+					static int Square(int intValue)
+					{
+						Console.WriteLine($"Called square with int argument: {intValue}");
+						return intValue * intValue;
+					}
+
+					// square method with double argument
+					static double Square(double doubleValue)
+					{
+						Console.WriteLine(
+							$"Called square with double argument: {doubleValue}");
+						return doubleValue * doubleValue;
+					}
+					```
+				</section>
+				<section data-markdown>
+					* The compiler distiguishes overloaded methods by their **signature**.
+					* The signature is a combination of the method name and parameters (types and count).
+					* Its return type is not consider in distinguishing overloaded methods.
+					
+					```[c#]
+					void Method1(int a, float b)
+					```
+					
+					```[c#]
+					void Method1(float a, int b)
+					```
+				</section>
+			</section>
+			<section>
+				<section data-markdown>
+					## Optional Parameters ##
+
+					* Allows a varying amount of arguments when calling a method
+					* Optional parameters have a default value that is assignged if the optional argument isn't passed in
+					
+					```[C#]
+					static int Power(int baseValue, int exponentValue = 2)
+					```
+				</section>
+				<section data-markdown>
+					### Named Parameters ###
+
+					```[C#]
+					public void SetTime(int hour = 0, int minute = 0, int second = 0)
+					```
+					
+					* `t.SetTime() // SetTime(0, 0, 0)`
+					* `t.SetTime(12) // SetTime(12, 0, 0)`
+					* `t.SetTime(12, 30) // SetTime(12, 30, 0)`
+					* `t.SetTime(12, 30, 22) // SetTime 12, 30, 22`
+				</section>
+				<section data-markdown>
+					How can you set just some of the arguments?
+					
+					```[C#]
+					t.SetTime(12, , 22); // COMPILATION ERROR
+					```
+					
+					* `t.SetTime(hour:12, second: 22) // SetTime(12, 0, 22)`
+					* `t.SetTime(minute: 30) // SetTime(0, 30, 0)`
+				</section>
+			</section>
+			<section>
+				<section data-markdown>
+					## Expression Bodied Methods and Properties ##
+				</section>
+				<section data-markdown>
+					```[C#]
+					static int Cube(int x)
+					{
+						return x * x * x;
+					}
+					```
+					
+					to
+					
+					```[C#]
+					static int Cube(int x) => x * x * x;
+					```
+				</section>
+				<section data-markdown>
+					* This can be with `static` and non-`static` methods
+					* `return` types are not required either
+					
+					```[C#]
+					static void PrintSomething(string something) => Console.WriteLine(something);
+					```
+				</section>
+			</section>
+			<section>
+				<section data-markdown>
+					## Recursion ##
+
+					A **recursive method** is a method that calls itself
+				</section>
+				<section data-markdown>
+					### Base Cases and Recursive Calls ###
+
+					* Only capable of solving only the simplest case(s) (**base cases**)
+					* Divides the problem in two coneptual pieces (**divide and conquer**)
+					* A piece that the method knows how to do and piece it doesn't know yet
+					* The later piece must resemble the original problem just simpler and smaller
+					* Because it resembles the problem the method can call itself to solve it
+					* This is called the **recursion step** or **recursive call**
+				</section>
+				<section data-markdown>
+					### Recursive Factorial Calculation ###
+
+					* n! = `n * (n-1) * (n-2) * ... * 1`
+					* 1! is equal to 1
+					* 0! is equal to 1
+					* 5! is 5 \* 4 \* 3 \* 2 \* 1 = 120
+				</section>
+				<section data-markdown>
+					Nonrecursive implemnation
+
+					```[C#]
+					long factorial = 1;
+					
+					for (long counter = number; counter >= 1; --counter)
+					{
+						factorial *= counter;
+					}
+					```
+				</section>
+				<section data-markdown>
+					```[C#]
+					static long Factorial(long number)
+					{
+						// base case
+						if (number <= 1)
+						{
+							return 1;
+						}
+						else // recursion step
+						{
+							return number * Factorial(number - 1);
+						}
+					}
+					```
+				</section>
+			</section>
+			<section>
+				<section data-markdown>
+					## Value vs Reference ##
+				</section>
+				<section data-markdown>
+					### Passing Arguments ###
+
+					* Pass arguments to method using **pass-by-value** or **pass-by-reference**
+					* by value 
+						* a copy of its value is made and passed into the called method
+						* changes made to the copy do not affect the original
+					* by reference
+						* the caller gives the method the ability to access and modify the original variable
+						* changes made affect the original
+				</section>
+				<section data-markdown>
+					### Value vs Reference Types ###
+
+					* Value Types - `int`, `double` and `decimal`
+					* A variable of a value type contain a value of that type
+					* Reference Types - refers to an object
+					* A variable of a reference type contain a location where the data is stored
+				</section>
+				<section data-markdown>
+					### `ref` and `out` Parameters ###
+
+					* `ref` keyword on a parameter declaration allows you to pass a varible by reference
+					* `out` creates an **output parameter** that allows the method to write to that variable						
+				</section>
+				<section data-markdown>
+					```[C#]
+					// x is passed as a reference
+					static void Square(ref int x) {
+						x = x * x;
+					}
+					
+					// value of x is available to caller
+					static void Square(out int x) {
+						x = 6;
+						x = x * x;
+					}
+					
+					// x value dies with the method
+					static void square(int x) {
+						x = x * x;
+					}
+					```
+				</section>
+				<section data-markdown>
+				</section>
+			</section>
+		</div>
+	</div>
+
+	<script src=" js/reveal.js"></script> 
+	
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			dependencies: [{
+					src: 'plugin/markdown/marked.js'
+				},
+				{
+					src: 'plugin/markdown/markdown.js'
+				},
+				{
+					src: 'plugin/notes/notes.js',
+					async: true
+				},
+				{
+					src: 'plugin/highlight/highlight.js',
+					async: true
+				}
+			]
+		});
+	</script>
+</body>
+
+</html>
