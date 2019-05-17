@@ -411,6 +411,43 @@
 					```
 				</section>
 				<section data-markdown>
+					```[C#]
+					static void Main() {
+						// display original values of y and z
+						Console.WriteLine($"Original value of y: {y}");
+						Console.WriteLine("Original value of z: uninitialized\n");
+					
+						// pass y and z by reference
+						SquareRef(ref y); // must use keyword ref
+						SquareOut(out z); // must use keyword out
+					
+						// display values of y and z after they’re modified by
+						// methods SquareRef and SquareOut, respectively
+						Console.WriteLine($"Value of y after SquareRef: {y}");
+						Console.WriteLine($"Value of z after SquareOut: {z}\n");
+					
+						// pass y and z by value
+						Square(y);
+						Square(z);
+					
+						// display values of y and z after they’re passed to method Square
+						// to demonstrate that arguments passed by value are not modified
+						Console.WriteLine($"Value of y after Square: {y}");
+						Console.WriteLine($"Value of z after Square: {z}");
+					}
+					```
+				</section>
+				<section data-markdown>
+					```[output]
+					Original value of y: 5
+					Original value of z: uninitialized
+					
+					Value of y after SquareRef: 25
+					Value of z after SquareOut: 36
+					
+					Value of y after Square: 25
+					Value of z after Square: 36
+					```
 				</section>
 			</section>
 		</div>
